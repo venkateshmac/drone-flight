@@ -6,6 +6,6 @@ EXPOSE 8080
 
 WORKDIR /usr/local/bin/
 
-COPY ./target/drone-flight-gateway-api-0.0.1-SNAPSHOT.jar webapp.jar
+COPY /target/drone-flight-gateway-api-0.0.1-SNAPSHOT.jar webapp.jar
 
 CMD ["java", "-jar","webapp.jar"]
