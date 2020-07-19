@@ -34,7 +34,13 @@ public class DroneFlightController
 	{
 		return "<p>Drone Flight Fleetman API Gateway at " + new Date() + "</p>";
 	}
-
+   
+	@GetMapping("/testE2E/{name}")
+	@ResponseBody
+	public String performTestE2E(@PathVariable("name") String name) {
+		System.out.println("########Perform E2E TEST CONTROLLER");
+		return externalService.getTestE2E(name);
+	}
 	
 	@GetMapping("/pilot/droneDataFetch/{flight_sessionId}")
 	@ResponseBody

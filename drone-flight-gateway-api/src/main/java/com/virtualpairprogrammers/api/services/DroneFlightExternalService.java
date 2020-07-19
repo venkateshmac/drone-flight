@@ -18,5 +18,10 @@ public class DroneFlightExternalService {
    public Collection<DroneData> getDroneData( String flightSessionId){
 	   return remoteFlightService.getDroneData(flightSessionId);
    }
+   
+   public String getTestE2E(String name) {
+	   System.out.println("##########PERFORM TEST#########");
+	   return remoteFlightService.getTestE2E(name);
+   }
 	
 }

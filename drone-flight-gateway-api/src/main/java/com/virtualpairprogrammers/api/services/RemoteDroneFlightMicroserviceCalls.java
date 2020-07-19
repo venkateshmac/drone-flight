@@ -19,6 +19,10 @@ public interface RemoteDroneFlightMicroserviceCalls {
 	@RequestMapping(method=RequestMethod.GET, value="/pilot/droneDataFetch/{flight_sessionId}")
 	public Collection<DroneData> getDroneData(@PathVariable("flight_sessionId") String flightSessionId);
 	
+	@RequestMapping(method=RequestMethod.GET, value="/pilot/testE2E/{name}")
+	public String getTestE2E(@PathVariable("name") String name);
+	
+	
 	
 	
 }

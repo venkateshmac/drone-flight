@@ -80,6 +80,15 @@ public class DroneFlightRestController {
 		return "<p>Drone Flight Data access Service Up " + new Date() + "</p>";
 	}
 	
+	///pilot/testE2E/{name}
+	@RequestMapping(method=RequestMethod.GET, value="/pilot/testE2E/{name}")
+	public ResponseEntity<String> performE2ETest(@PathVariable String name){
+		System.out.println("################PerformE2ETest##########");
+		return  new ResponseEntity<>("Welcome to Drone Flight" + name+"....!",HttpStatus.OK);
+	}
+		
+	
+	
 	
 	
 }
