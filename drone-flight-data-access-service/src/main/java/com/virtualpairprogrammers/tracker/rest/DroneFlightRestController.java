@@ -1,5 +1,6 @@
 package com.virtualpairprogrammers.tracker.rest;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,8 @@ public class DroneFlightRestController {
 //		repository.save(customer);
 //	}
 //	
+	
+	
 	@RequestMapping(value = "droneFlight" , method = RequestMethod.POST)
 	public void droneSave(@RequestBody DroneData drone){
 		//log.info("Storing customer in database {}", drone);
@@ -70,6 +73,11 @@ public class DroneFlightRestController {
 		
 		
 		
+	}
+	
+	@RequestMapping("/drone")
+	public String getDroneTest(){
+		return "<p>Drone Flight Data access Service Up " + new Date() + "</p>";
 	}
 	
 	
