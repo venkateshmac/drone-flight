@@ -17,7 +17,7 @@
       spec:
         containers:
         - name: dronefleet-flight-access
-          image: venkatgenxdev/drone-flight-data-access-service:release2
+          image: venkatgenxdev/drone-flight-data-access:release4
           env:
           - name: SPRING_PROFILES_ACTIVE
             value: local-microservice
@@ -40,7 +40,7 @@
       spec:
         containers:
         - name: dronefleet-flight-upload
-          image: venkatgenxdev/drone-flight-data-access-service:release2
+          image: venkatgenxdev/drone-flight-data-upload:release4
           env:
           - name: SPRING_PROFILES_ACTIVE
             value: local-microservice
@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
       - name: drone-api-gateway
-        image: venkatgenxdev/drone-api-gateway:release2
+        image: venkatgenxdev/drone-flight-gateway-api:release4
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: local-microservice
