@@ -66,11 +66,18 @@ public class DroneFlightController
 		return drones;
 	}
 	
-//	@RequestMapping(value = "/pilot/uploadFlightData" , method = RequestMethod.POST)
-//	public String uploadFilghtData(@RequestBody DroneData data){
-//		System.out.println("########UPload FilghtData#######");
-//		return externalDataUploadService.uploadFilghtData(data);
-//	}
+	@RequestMapping(value = "/pilot/uploadFlightData" , method = RequestMethod.POST)
+	public String uploadFilghtData(@RequestBody DroneData data){
+		System.out.println("########UPload FilghtData#######");
+		return externalDataUploadService.uploadFilghtData(data);
+	}
+	
+	
+	@RequestMapping(value="/pilot/allDrones", method=RequestMethod.POST)
+	public Collection<DroneData> getAllDrones(){
+		Collection<DroneData> drones = externalDataAccessService.getAllDrones();
+		return drones;
+	}
 	
 	
 	

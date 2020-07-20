@@ -25,8 +25,7 @@ public interface RemoteDroneFlightDataAccessMicroserviceCalls {
 	
 
 	
-	@RequestMapping(method=RequestMethod.GET, value="/flights")
-	public List<DroneData> getFlights();
+	
 	
 
 }
