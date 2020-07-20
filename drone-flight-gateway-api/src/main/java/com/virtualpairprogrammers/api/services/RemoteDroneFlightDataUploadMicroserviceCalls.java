@@ -19,7 +19,7 @@ public interface RemoteDroneFlightDataUploadMicroserviceCalls{
 	
 	
 	@RequestMapping(value = "/pilot/uploadFilghtData/" , method = RequestMethod.POST)
-	public String uploadFilghtData(@RequestBody DroneData customer);
+	public String uploadFilghtData(@RequestBody DroneData drone);
 	
 	
 }

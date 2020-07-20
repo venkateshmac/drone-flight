@@ -18,10 +18,10 @@ com/virtualpairprogrammers/tracker/DroneFlightDataAccessServiceApplication.class
 com/virtualpairprogrammers/tracker/domain/LatLong.class
 com/virtualpairprogrammers/tracker/domain/Summary.class
 com/virtualpairprogrammers/tracker/repository/DroneNotFoundException.class
+com/virtualpairprogrammers/tracker/rest/DroneFlightDataUploadRestController.class
 com/virtualpairprogrammers/tracker/repository/DroneRepository.class
 com/virtualpairprogrammers/tracker/domain/Gimbal.class
 com/virtualpairprogrammers/tracker/domain/Event.class
 com/virtualpairprogrammers/tracker/domain/Camera.class
 com/virtualpairprogrammers/tracker/domain/FlightController.class
 com/virtualpairprogrammers/tracker/domain/VehicleNotFoundException.class
-com/virtualpairprogrammers/tracker/rest/DroneFlightRestController.class

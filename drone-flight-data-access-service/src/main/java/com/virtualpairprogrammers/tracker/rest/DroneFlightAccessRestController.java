@@ -17,36 +17,54 @@ import com.virtualpairprogrammers.tracker.repository.DroneDataModel;
 import com.virtualpairprogrammers.tracker.repository.DroneNotFoundException;
 import com.virtualpairprogrammers.tracker.repository.DroneRepository;
 
-@RestController
-public class DroneFlightRestController {
 
+
+@RestController
+public class DroneFlightAccessRestController {
+	
+//	@Autowired
+//	private CustomerRepository repository;
 	@Autowired
 	private DroneRepository droneRepo;
-
+	
 	@Autowired
 	private DroneDataModel model;
+	
 
-	@RequestMapping(value = "/pilot/uploadFilghtData/", method = RequestMethod.POST)
-	public String droneSave(@RequestBody DroneData drone) {
+	
 
-		DroneData data = null;
-		try {
-			data = droneRepo.save(drone);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return data.getFlightSessionId();
+	@RequestMapping("/pilot/allDrones")
+	public List<DroneData> findFlights(){
+		final List<DroneData> flights = droneRepo.findAll();
+		
+		return flights;
 	}
-
+	
+	@RequestMapping(method=RequestMethod.GET,value="/pilot/droneDataFetch/{flight_sessionId}")
+	public DroneData findFlightDetails(@PathVariable String droneSessionID)  {
+		 DroneData data = null;
+		
+		  data = model.findFlightSessionId(droneSessionID);
+		
+		return data;
+		
+		
+		
+	}
+	
 	@RequestMapping("/drone")
-	public String getDroneTest() {
+	public String getDroneTest(){
 		return "<p>Drone Flight Data access Service Up " + new Date() + "</p>";
 	}
-
-	/// pilot/testE2E/{name}
-	@RequestMapping(method = RequestMethod.GET, value = "/pilot/testE2E/dataUpload/{name}")
-	public String performE2ETest(@PathVariable String name) {
-		return "Welcome to Drone Flight" + name + "....!";
+	
+	///pilot/testE2E/{name}
+	@RequestMapping(method=RequestMethod.GET, value="/pilot/testE2E/dataAccess/{name}")
+	public String performE2ETest(@PathVariable String name){
+		return  "Welcome to Drone Flight" + name+"....!";
 	}
-
+		
+	
+	
+	
+	
 }

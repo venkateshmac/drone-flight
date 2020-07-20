@@ -1,6 +1,7 @@
 package com.virtualpairprogrammers.api.services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ public class DroneFlightDataAccessExternalService {
    @Autowired
    private RemoteDroneFlightDataAccessMicroserviceCalls remoteFlightDataAccessService;
    
-   public Collection<DroneData> getAllDrones(){
+   public List<DroneData> getAllDrones(){
 	   return remoteFlightDataAccessService.getAllDrones();
    }
    public Collection<DroneData> getDroneData( String flightSessionId){

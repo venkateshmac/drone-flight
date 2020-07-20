@@ -73,9 +73,9 @@ public class DroneFlightController
 	}
 	
 	
-	@RequestMapping(value="/pilot/allDrones", method=RequestMethod.POST)
-	public Collection<DroneData> getAllDrones(){
-		Collection<DroneData> drones = externalDataAccessService.getAllDrones();
+	@RequestMapping(value="/pilot/allDrones", method=RequestMethod.GET)
+	public List<DroneData> getAllDrones(){
+		List<DroneData> drones = externalDataAccessService.getAllDrones();
 		return drones;
 	}
 	

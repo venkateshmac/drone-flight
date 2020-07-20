@@ -17,12 +17,15 @@ public class DroneDataModelImpl implements DroneDataModel {
 	
 
 	@Override
-	public DroneData findFlightSessionId(String flightSessionId) throws DroneNotFoundException {
+	public DroneData findFlightSessionId(String flightSessionId)  {
 		
 		Example<DroneData> example = Example.of(new DroneBuilder().withFlightSessionId(flightSessionId).build());
-		List<DroneData> all = droneRepo.findAll(example);
-		if (all.size() == 0) throw new DroneNotFoundException();
-		return all.get(all.size() - 1);
+		List<DroneData> drones = droneRepo.findAll(example);
+		if(drones != null && drones.size() >0) {
+			return drones.get(0);
+		}else {
+			return null;
+		}
 	}
 
 	

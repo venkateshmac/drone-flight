@@ -15,7 +15,7 @@ import com.virtualpairprogrammers.api.domain.DroneData;
 public interface RemoteDroneFlightDataAccessMicroserviceCalls {
 
 	@RequestMapping(method=RequestMethod.GET, value="/pilot/allDrones")
-	public Collection<com.virtualpairprogrammers.api.domain.DroneData> getAllDrones();
+	public List<com.virtualpairprogrammers.api.domain.DroneData> getAllDrones();
 
 	@RequestMapping(method=RequestMethod.GET, value="/pilot/droneDataFetch/{flight_sessionId}")
 	public Collection<com.virtualpairprogrammers.api.domain.DroneData> getDroneData(@PathVariable("flight_sessionId") String flightSessionId);
