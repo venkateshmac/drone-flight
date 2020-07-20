@@ -23,5 +23,10 @@ public class DroneFlightExternalService {
 	   System.out.println("##########PERFORM TEST#########");
 	   return remoteFlightService.getTestE2E(name);
    }
+   
+   public String uploadFilghtData(DroneData data) {
+	   System.out.println("########UPload FilghtData#######");
+	   return remoteFlightService.uploadFilghtData(data);
+   }
 	
 }

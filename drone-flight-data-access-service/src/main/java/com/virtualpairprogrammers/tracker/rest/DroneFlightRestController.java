@@ -30,26 +30,18 @@ public class DroneFlightRestController {
 	@Autowired
 	private DroneDataModel model;
 	
-//	
-//	@RequestMapping("customer/")
-//	public List<Customer> findAll(){
-//		final List<Customer> customers = repository.findAll();
-//		log.info("Fetching customers from database {}" , customers);
-//		return customers;
-//	}
-//	
-//	@RequestMapping(value = "customer/" , method = RequestMethod.POST)
-//	public void save(@RequestBody Customer customer){
-//		log.info("Storing customer in database {}", customer);
-//		repository.save(customer);
-//	}
-//	
+
 	
-	
-	@RequestMapping(value = "droneFlight" , method = RequestMethod.POST)
-	public void droneSave(@RequestBody DroneData drone){
-		//log.info("Storing customer in database {}", drone);
-		droneRepo.save(drone);
+	@RequestMapping(value = "/pilot/uploadFilghtData/" , method = RequestMethod.POST)
+	public String droneSave(@RequestBody DroneData drone){
+		
+		DroneData data = null;
+		try {
+		 data = droneRepo.save(drone);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return data.getFlightSessionId();
 	}
 	
 	@RequestMapping("/flights")
@@ -82,9 +74,8 @@ public class DroneFlightRestController {
 	
 	///pilot/testE2E/{name}
 	@RequestMapping(method=RequestMethod.GET, value="/pilot/testE2E/{name}")
-	public ResponseEntity<String> performE2ETest(@PathVariable String name){
-		System.out.println("################PerformE2ETest##########");
-		return  new ResponseEntity<>("Welcome to Drone Flight" + name+"....!",HttpStatus.OK);
+	public String performE2ETest(@PathVariable String name){
+		return  "Welcome to Drone Flight" + name+"....!";
 	}
 		
 	

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.virtualpairprogrammers.api.domain.VehiclePosition;
 
-//@FeignClient(url="${position-tracker-url}", name="fleetman-position-tracker")
-@FeignClient(url="fleet-position-tracker", name="fleetman-position-tracker")
+@FeignClient(url="http://dronefleet-flight:8080", name="dronefleet-flight")
+//@FeignClient(url="fleet-position-tracker", name="fleetman-position-tracker")
 public interface RemotePositionMicroserviceCalls 
 {
 	@RequestMapping(method=RequestMethod.GET, value="/vehicles/")

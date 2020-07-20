@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.virtualpairprogrammers.api.domain.DroneData;
@@ -51,16 +53,12 @@ public class DroneFlightController
 		return drones;
 	}
 	
+	@RequestMapping(value = "/pilot/uploadFlightData" , method = RequestMethod.POST)
+	public String uploadFilghtData(@RequestBody DroneData data){
+		System.out.println("########UPload FilghtData#######");
+		return externalService.uploadFilghtData(data);
+	}
 	
 
-//	@Scheduled(fixedRate=2000)
-//	public void updatePositions()
-//	{
-//		Collection<VehiclePosition> results = externalService.getAllUpdatedPositionsSince(lastUpdateTime);
-//		this.lastUpdateTime = new Date();
-//		for (VehiclePosition next: results)
-//		{
-//			this.messagingTemplate.convertAndSend("/vehiclepositions/messages", next);
-//		}
-//	}
+
 }
