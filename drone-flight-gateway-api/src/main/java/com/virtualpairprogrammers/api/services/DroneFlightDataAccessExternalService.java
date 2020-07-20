@@ -1,6 +1,5 @@
 package com.virtualpairprogrammers.api.services;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class DroneFlightDataAccessExternalService {
    public List<DroneData> getAllDrones(){
 	   return remoteFlightDataAccessService.getAllDrones();
    }
-   public Collection<DroneData> getDroneData( String flightSessionId){
+   public DroneData getDroneData( String flightSessionId){
 	   return remoteFlightDataAccessService.getDroneData(flightSessionId);
    }
    

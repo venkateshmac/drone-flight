@@ -60,10 +60,10 @@ public class DroneFlightController
 	@GetMapping("/pilot/droneDataFetch/{flight_sessionId}")
 	@ResponseBody
 	@CrossOrigin(origins="*")
-	public Collection<DroneData> fetchDroneData(@PathVariable("flight_sessionId") String flightSessionId){
+	public DroneData fetchDroneData(@PathVariable("flight_sessionId") String flightSessionId){
 		
-		Collection<DroneData> drones = externalDataAccessService.getDroneData(flightSessionId);
-		return drones;
+		DroneData drone = externalDataAccessService.getDroneData(flightSessionId);
+		return drone;
 	}
 	
 	@RequestMapping(value = "/pilot/uploadFlightData" , method = RequestMethod.POST)
