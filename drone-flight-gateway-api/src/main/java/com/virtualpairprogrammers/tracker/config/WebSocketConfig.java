@@ -1,4 +1,4 @@
-package com.virtualpairprogrammers.api.config;
+package com.virtualpairprogrammers.tracker.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

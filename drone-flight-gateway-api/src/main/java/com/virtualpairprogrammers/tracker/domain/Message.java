@@ -1,4 +1,4 @@
-package com.virtualpairprogrammers.api.domain;
+package com.virtualpairprogrammers.tracker.domain;
 
 import java.util.HashMap;
 import java.util.Map;

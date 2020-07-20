@@ -1,4 +1,4 @@
-package com.virtualpairprogrammers.api.domain;
+package com.virtualpairprogrammers.tracker.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;

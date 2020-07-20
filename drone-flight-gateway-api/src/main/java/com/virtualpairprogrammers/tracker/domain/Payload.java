@@ -1,5 +1,5 @@
 
-package com.virtualpairprogrammers.api.domain;
+package com.virtualpairprogrammers.tracker.domain;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "serial_number",
-    "firmware_version"
+    "camera",
+    "gimbal"
 })
-public class RemoteController {
+public class Payload {
 
-    @JsonProperty("serial_number")
-    private Object serialNumber;
-    @JsonProperty("firmware_version")
-    private Object firmwareVersion;
+    @JsonProperty("camera")
+    private Camera camera;
+    @JsonProperty("gimbal")
+    private Gimbal gimbal;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("serial_number")
-    public Object getSerialNumber() {
-        return serialNumber;
+    @JsonProperty("camera")
+    public Camera getCamera() {
+        return camera;
     }
 
-    @JsonProperty("serial_number")
-    public void setSerialNumber(Object serialNumber) {
-        this.serialNumber = serialNumber;
+    @JsonProperty("camera")
+    public void setCamera(Camera camera) {
+        this.camera = camera;
     }
 
-    @JsonProperty("firmware_version")
-    public Object getFirmwareVersion() {
-        return firmwareVersion;
+    @JsonProperty("gimbal")
+    public Gimbal getGimbal() {
+        return gimbal;
     }
 
-    @JsonProperty("firmware_version")
-    public void setFirmwareVersion(Object firmwareVersion) {
-        this.firmwareVersion = firmwareVersion;
+    @JsonProperty("gimbal")
+    public void setGimbal(Gimbal gimbal) {
+        this.gimbal = gimbal;
     }
 
     @JsonAnyGetter

@@ -1,9 +1,10 @@
-package com.virtualpairprogrammers.api.services;
+package com.virtualpairprogrammers.tracker.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.virtualpairprogrammers.api.domain.DroneData;
+import com.virtualpairprogrammers.tracker.domain.DroneData;
+
 
 @Service
 public class DroneFlightDataUploadExternalService {

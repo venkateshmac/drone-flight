@@ -1,12 +1,12 @@
-package com.virtualpairprogrammers.api.controllers;
+package com.virtualpairprogrammers.tracker.controllers;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.virtualpairprogrammers.api.domain.DroneData;
-import com.virtualpairprogrammers.api.services.DroneFlightDataAccessExternalService;
-import com.virtualpairprogrammers.api.services.DroneFlightDataUploadExternalService;
+import com.virtualpairprogrammers.tracker.domain.DroneData;
+import com.virtualpairprogrammers.tracker.services.DroneFlightDataAccessExternalService;
+import com.virtualpairprogrammers.tracker.services.DroneFlightDataUploadExternalService;
 
 @Controller
 @RequestMapping("/")
@@ -58,16 +58,14 @@ public class DroneFlightController
 	}
 	
 	@GetMapping("/pilot/droneDataFetch/{flight_sessionId}")
-	@ResponseBody
-	@CrossOrigin(origins="*")
-	public DroneData fetchDroneData(@PathVariable("flight_sessionId") String flightSessionId){
+	public  ResponseEntity<DroneData> fetchDroneData(@PathVariable("flight_sessionId") String flightSessionId){
 		
 		DroneData drone = externalDataAccessService.getDroneData(flightSessionId);
-		return drone;
+		return new ResponseEntity<>(drone, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/pilot/uploadFlightData" , method = RequestMethod.POST)
-	public String uploadFilghtData(@RequestBody DroneData data){
+	public String uploadFlightData(@RequestBody DroneData data){
 		System.out.println("########UPload FilghtData#######");
 		return externalDataUploadService.uploadFilghtData(data);
 	}

@@ -1,6 +1,5 @@
-package com.virtualpairprogrammers.api.services;
+package com.virtualpairprogrammers.tracker.services;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -8,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.virtualpairprogrammers.api.domain.DroneData;
+import com.virtualpairprogrammers.tracker.domain.DroneData;
+
+
 
 @FeignClient(url="http://dronefleet-flight-access:8080", name="dronefleet-flight-access")
 

@@ -1,5 +1,5 @@
 
-package com.virtualpairprogrammers.api.domain;
+package com.virtualpairprogrammers.tracker.domain;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,22 +15,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "serial_number",
     "firmware_version"
 })
-public class FlightController {
+public class Gimbal {
 
     @JsonProperty("serial_number")
-    private String serialNumber;
+    private Object serialNumber;
     @JsonProperty("firmware_version")
     private String firmwareVersion;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("serial_number")
-    public String getSerialNumber() {
+    public Object getSerialNumber() {
         return serialNumber;
     }
 
     @JsonProperty("serial_number")
-    public void setSerialNumber(String serialNumber) {
+    public void setSerialNumber(Object serialNumber) {
         this.serialNumber = serialNumber;
     }
 
