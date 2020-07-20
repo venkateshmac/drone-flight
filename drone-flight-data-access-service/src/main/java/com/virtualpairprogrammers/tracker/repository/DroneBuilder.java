@@ -4,10 +4,10 @@ import com.virtualpairprogrammers.tracker.domain.DroneData;
 
 public class DroneBuilder {
 	
-	private String flightSessionId;
+	private String flightId;
 
-	public DroneBuilder withFlightSessionId(String sessionId) {
-		this.flightSessionId = flightSessionId;
+	public DroneBuilder withFlightId(String sessionId) {
+		this.flightId = sessionId;
 		return this;
 	}
 	

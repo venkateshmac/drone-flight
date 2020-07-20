@@ -17,15 +17,26 @@ public class DroneDataModelImpl implements DroneDataModel {
 	
 
 	@Override
-	public DroneData findFlightSessionId(String flightSessionId)  {
+	public DroneData findFlightSessionId(String flightId)  {
 		
-		Example<DroneData> example = Example.of(new DroneBuilder().withFlightSessionId(flightSessionId).build());
+		Example<DroneData> example = Example.of(new DroneBuilder().withFlightId(flightId).build());
 		List<DroneData> drones = droneRepo.findAll(example);
-		if(drones != null && drones.size() >0) {
-			return drones.get(0);
-		}else {
-			return null;
-		}
+		DroneData resultDrone = null;
+		
+			for(DroneData droneData : drones) {
+				System.out.println("FLIGHTSESSIONID...." + droneData.getFlightId());
+				if(droneData.getFlightId().equalsIgnoreCase(flightId)) {
+					System.out.println("FLIGHTSESSIONID....Matched" + droneData.getFlightSessionId());
+					resultDrone = droneData;
+					break;
+				}
+			}
+			if(resultDrone != null) {
+				System.out.println("NOT NULLFLIGHTSESSIONID...." + resultDrone.getFlightSessionId());
+				return resultDrone;
+			}else {
+				return null;
+			}
 	}
 
 	

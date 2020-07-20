@@ -59,17 +59,14 @@ public class DroneFlightController
 	
 	@GetMapping("/pilot/droneDataFetch/{flight_sessionId}")
 	
-	public  ResponseEntity<DroneData> fetchDroneData(@PathVariable("flight_sessionId") String flightSessionId){
+	public  ResponseEntity<Object> fetchDroneData(@PathVariable("flight_sessionId") String flightSessionId){
 		
-		DroneData drone = externalDataAccessService.getDroneData(flightSessionId);
-		if(drone != null) {
-		return new ResponseEntity<DroneData>(drone, HttpStatus.OK);
-		}else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		return  externalDataAccessService.getDroneData(flightSessionId);
+		
 	}
 	
 	@RequestMapping(value = "/pilot/uploadFlightData" , method = RequestMethod.POST)
+	@ResponseBody
 	public String uploadFlightData(@RequestBody DroneData data){
 		System.out.println("########UPload FilghtData#######");
 		return externalDataUploadService.uploadFilghtData(data);
@@ -77,6 +74,7 @@ public class DroneFlightController
 	
 	
 	@RequestMapping(value="/pilot/allDrones", method=RequestMethod.GET)
+	@ResponseBody
 	public List<DroneData> getAllDrones(){
 		List<DroneData> drones = externalDataAccessService.getAllDrones();
 		

@@ -35,7 +35,7 @@ public class DroneFlightDataUploadRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return data.getFlightSessionId();
+		return data.getFlightId();
 	}
 
 	@RequestMapping("/drone")

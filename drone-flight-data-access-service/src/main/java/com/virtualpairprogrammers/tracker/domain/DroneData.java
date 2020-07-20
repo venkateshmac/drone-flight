@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "uploadingOrgUuid",
     "uploadingPilotUuid",
     "flight_session_id",
+    "flight_id",
     "message"
 })
 public class DroneData {
@@ -33,6 +34,8 @@ public class DroneData {
     private String uploadingPilotUuid;
     @JsonProperty("flight_session_id")
     private String flightSessionId;
+    @JsonProperty("flight_id")
+    private String flightId;
     @JsonProperty("message")
     private Message message;
     @JsonIgnore
@@ -107,5 +110,13 @@ public class DroneData {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
+	public String getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(String flightId) {
+		this.flightId = flightId;
+	}
 
 }
