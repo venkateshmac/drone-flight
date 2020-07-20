@@ -1,0 +1,96 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: position-tracker
+spec:
+  selector:
+    matchLabels:
+      app: position-tracker
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: position-tracker
+    spec:
+      containers:
+      - name: position-tracker
+        image: richardchesterwood/k8s-fleetman-position-tracker:release3
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+
+---
+
+  #Drone Fleet Flight to access MongoDB transactio
+
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: dronefleet-flight
+  spec:
+    selector:
+      matchLabels:
+        app: dronefleet-flight
+    replicas: 1
+    template: # template for the pods
+      metadata:
+        labels:
+          app: dronefleet-flight
+      spec:
+        containers:
+        - name: dronefleet-flight
+          image: venkatgenxdev/drone-flight-data-access-service:release2
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: local-microservice
+
+        #image: venkatgenxdev/drone-flight-data-access-service:latest
+
+
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  selector:
+    matchLabels:
+      app: api-gateway
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        image: richardchesterwood/k8s-fleetman-api-gateway:release2
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drone-api-gateway
+spec:
+  selector:
+    matchLabels:
+      app: drone-api-gateway
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: drone-api-gateway
+    spec:
+      containers:
+      - name: drone-api-gateway
+        image: venkatgenxdev/drone-api-gateway:release2
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: local-microservice
+
