@@ -6,19 +6,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.virtualpairprogrammers.tracker.domain.DroneData;
 import com.virtualpairprogrammers.tracker.services.DroneFlightDataAccessExternalService;
 import com.virtualpairprogrammers.tracker.services.DroneFlightDataUploadExternalService;
 
-@Controller
+@RestController
 @RequestMapping("/")
 public class DroneFlightController 
 {	
@@ -58,10 +58,15 @@ public class DroneFlightController
 	}
 	
 	@GetMapping("/pilot/droneDataFetch/{flight_sessionId}")
+	
 	public  ResponseEntity<DroneData> fetchDroneData(@PathVariable("flight_sessionId") String flightSessionId){
 		
 		DroneData drone = externalDataAccessService.getDroneData(flightSessionId);
-		return new ResponseEntity<>(drone, HttpStatus.OK);
+		if(drone != null) {
+		return new ResponseEntity<DroneData>(drone, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@RequestMapping(value = "/pilot/uploadFlightData" , method = RequestMethod.POST)
@@ -74,6 +79,7 @@ public class DroneFlightController
 	@RequestMapping(value="/pilot/allDrones", method=RequestMethod.GET)
 	public List<DroneData> getAllDrones(){
 		List<DroneData> drones = externalDataAccessService.getAllDrones();
+		
 		return drones;
 	}
 	

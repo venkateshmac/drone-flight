@@ -13,7 +13,9 @@ public class DroneFlightDataAccessExternalService {
    private RemoteDroneFlightDataAccessMicroserviceCalls remoteFlightDataAccessService;
    
    public List<DroneData> getAllDrones(){
-	   return remoteFlightDataAccessService.getAllDrones();
+	   List<DroneData> drones = remoteFlightDataAccessService.getAllDrones();
+	   System.out.println("########Drones" + drones);
+	   return drones;
    }
    public DroneData getDroneData( String flightSessionId){
 	   return remoteFlightDataAccessService.getDroneData(flightSessionId);
