@@ -1,35 +1,15 @@
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: fleetman-position-tracker
-
-spec:
-  # This defines which pods are going to be represented by this Service
-  # The service becomes a network endpoint for either other services
-  # or maybe external users to connect to (eg browser)
-  selector:
-    app: position-tracker
-
-  ports:
-    - name: http
-      port: 8080
-      nodePort: 30060
-
-  type: NodePort
-
----
   apiVersion: v1
   kind: Service
   metadata:
-    name: dronefleet-flight
+    name: dronefleet-flight-access
 
   spec:
     # This defines which pods are going to be represented by this Service
     # The service becomes a network endpoint for either other services
     # or maybe external users to connect to (eg browser)
     selector:
-      app: dronefleet-flight
+      app: dronefleet-flight-access
 
     ports:
       - name: http
@@ -39,24 +19,25 @@ spec:
     type: NodePort
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: fleetman-api-gateway
+ apiVersion: v1
+ kind: Service
+ metadata:
+    name: dronefleet-flight-upload
 
-spec:
-  # This defines which pods are going to be represented by this Service
-  # The service becomes a network endpoint for either other services
-  # or maybe external users to connect to (eg browser)
-  selector:
-    app: api-gateway
+ spec:
+    # This defines which pods are going to be represented by this Service
+    # The service becomes a network endpoint for either other services
+    # or maybe external users to connect to (eg browser)
+    selector:
+      app: dronefleet-flight-upload
 
-  ports:
-    - name: http
-      port: 8080
-      nodePort: 30020
+    ports:
+      - name: http
+        port: 8080
+        nodePort: 30060
 
-  type: NodePort
+    type: NodePort
+
 ---
   apiVersion: v1
   kind: Service

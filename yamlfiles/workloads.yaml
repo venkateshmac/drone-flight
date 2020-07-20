@@ -1,77 +1,49 @@
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: position-tracker
-spec:
-  selector:
-    matchLabels:
-      app: position-tracker
-  replicas: 1
-  template: # template for the pods
-    metadata:
-      labels:
-        app: position-tracker
-    spec:
-      containers:
-      - name: position-tracker
-        image: richardchesterwood/k8s-fleetman-position-tracker:release3
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: production-microservice
-
----
-
-  #Drone Fleet Flight to access MongoDB transactio
-
+  
+#Drone-flight-data-access Service
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: dronefleet-flight
+    name: dronefleet-flight-access
   spec:
     selector:
       matchLabels:
-        app: dronefleet-flight
+        app: dronefleet-flight-access
     replicas: 1
     template: # template for the pods
       metadata:
         labels:
-          app: dronefleet-flight
+          app: dronefleet-flight-access
       spec:
         containers:
-        - name: dronefleet-flight
+        - name: dronefleet-flight-access
           image: venkatgenxdev/drone-flight-data-access-service:release2
           env:
           - name: SPRING_PROFILES_ACTIVE
             value: local-microservice
-
-        #image: venkatgenxdev/drone-flight-data-access-service:latest
-
-
-
-
-
+     
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: api-gateway
-spec:
-  selector:
-    matchLabels:
-      app: api-gateway
-  replicas: 1
-  template: # template for the pods
-    metadata:
-      labels:
-        app: api-gateway
-    spec:
-      containers:
-      - name: api-gateway
-        image: richardchesterwood/k8s-fleetman-api-gateway:release2
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: production-microservice
+#Drone-flight-data-Upload Service
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: dronefleet-flight-upload
+  spec:
+    selector:
+      matchLabels:
+        app: dronefleet-flight-upload
+    replicas: 1
+    template: # template for the pods
+      metadata:
+        labels:
+          app: dronefleet-flight-upload
+      spec:
+        containers:
+        - name: dronefleet-flight-upload
+          image: venkatgenxdev/drone-flight-data-access-service:release2
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: local-microservice
 ---
 apiVersion: apps/v1
 kind: Deployment

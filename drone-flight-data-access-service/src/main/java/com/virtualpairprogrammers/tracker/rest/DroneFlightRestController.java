@@ -32,26 +32,15 @@ public class DroneFlightRestController {
 	
 
 	
-	@RequestMapping(value = "/pilot/uploadFilghtData/" , method = RequestMethod.POST)
-	public String droneSave(@RequestBody DroneData drone){
-		
-		DroneData data = null;
-		try {
-		 data = droneRepo.save(drone);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return data.getFlightSessionId();
-	}
-	
-	@RequestMapping("/flights")
+
+	@RequestMapping("/pilot/allDrones")
 	public List<DroneData> findFlights(){
 		final List<DroneData> flights = droneRepo.findAll();
 		
 		return flights;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET,value="/findFlight/{droneSessionID}")
+	@RequestMapping(method=RequestMethod.GET,value="/pilot/droneDataFetch/{flight_sessionId}")
 	public ResponseEntity<DroneData> findFlightDetails(@PathVariable String droneSessionID)  {
 		 DroneData data = null;
 		try {
@@ -73,7 +62,7 @@ public class DroneFlightRestController {
 	}
 	
 	///pilot/testE2E/{name}
-	@RequestMapping(method=RequestMethod.GET, value="/pilot/testE2E/{name}")
+	@RequestMapping(method=RequestMethod.GET, value="/pilot/testE2E/dataAccess/{name}")
 	public String performE2ETest(@PathVariable String name){
 		return  "Welcome to Drone Flight" + name+"....!";
 	}
